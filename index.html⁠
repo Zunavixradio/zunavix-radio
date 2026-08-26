@@ -1,46 +1,194 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>ZUNAVIX RADIO</title>
-<style>
-*{box-sizing:border-box}body{margin:0;background:#07070a;color:#fff;font-family:Arial,Helvetica,sans-serif}
-header{padding:22px 7%;border-bottom:1px solid #292934;display:flex;justify-content:space-between;align-items:center}
-.logo{font-weight:900;letter-spacing:2px;font-size:24px}.logo span{color:#ff3158}
-nav a{color:#ccc;text-decoration:none;margin-left:18px;font-size:14px}
-.hero{text-align:center;padding:110px 20px;background:radial-gradient(circle,#35131f,#07070a 65%)}
-.k{color:#ff3158;letter-spacing:3px;font-weight:bold;font-size:13px}
-h1{font-size:clamp(50px,10vw,105px);line-height:.9;margin:18px 0;letter-spacing:-4px}
-.hero p{color:#aaa;max-width:650px;margin:25px auto;line-height:1.6;font-size:18px}
-.btn{display:inline-block;background:#ff3158;color:white;padding:16px 28px;border-radius:30px;text-decoration:none;font-weight:bold}
-.live{margin:25px auto;padding:16px;border:1px solid #292934;border-radius:15px;max-width:500px;color:#bbb}
-section{max-width:1100px;margin:auto;padding:70px 7%}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.card{background:#111118;border:1px solid #292934;border-radius:20px;padding:25px}
-.card p{color:#aaa;line-height:1.6}
-.ad{background:#171019;border:1px solid #542131;border-radius:24px;padding:35px}
-footer{padding:35px 7%;border-top:1px solid #292934;color:#aaa}
-@media(max-width:700px){nav{display:none}.grid{grid-template-columns:1fr}h1{letter-spacing:-2px}}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZUNAVIX RADIO | DJ Spotlight, Nightlife & Music Promotions</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #090611;
+      color: #f0f0f5;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      padding-bottom: 60px;
+    }
+    header {
+      text-align: center;
+      padding: 30px 15px 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(18, 11, 31, 0.8);
+    }
+    .logo {
+      font-size: 26px;
+      font-weight: 900;
+      letter-spacing: 2px;
+      background: linear-gradient(45deg, #ff007f, #7928ca, #00d4ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .tagline {
+      font-size: 13px;
+      color: #8f8fa3;
+      margin-top: 5px;
+      letter-spacing: 0.5px;
+    }
+    .container {
+      max-width: 500px;
+      margin: 0 auto;
+      padding: 20px 15px;
+    }
+    /* Live Player Card */
+    .player-card {
+      background: linear-gradient(135deg, rgba(255, 0, 128, 0.1), rgba(121, 40, 202, 0.15));
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 20px;
+      padding: 24px;
+      text-align: center;
+      margin-bottom: 30px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+    .badge {
+      display: inline-block;
+      background: #ff0055;
+      font-size: 10px;
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: 12px;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+    }
+    audio {
+      width: 100%;
+      margin: 15px 0 5px;
+      outline: none;
+      filter: invert(0.85);
+    }
+    /* Section Headings */
+    h2 {
+      font-size: 18px;
+      margin: 25px 0 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #fff;
+    }
+    /* Promo Cards */
+    .promo-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: 16px;
+      margin-bottom: 12px;
+      display: flex;
+      gap: 15px;
+      align-items: center;
+    }
+    .promo-icon {
+      width: 50px;
+      height: 50px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      flex-shrink: 0;
+    }
+    .promo-info h3 { font-size: 15px; margin-bottom: 3px; }
+    .promo-info p { font-size: 12px; color: #a0a0b2; line-height: 1.4; }
+    .btn-action {
+      display: inline-block;
+      margin-top: 6px;
+      font-size: 11px;
+      font-weight: 600;
+      color: #00d4ff;
+      text-decoration: none;
+    }
+    /* Promotion Booking CTA */
+    .cta-box {
+      background: linear-gradient(135deg, #7928ca, #ff007f);
+      border-radius: 20px;
+      padding: 25px 20px;
+      text-align: center;
+      margin-top: 35px;
+    }
+    .cta-box h3 { font-size: 18px; margin-bottom: 8px; }
+    .cta-box p { font-size: 12px; color: rgba(255,255,255,0.85); margin-bottom: 15px; }
+    .btn-promo {
+      background: #ffffff;
+      color: #090611;
+      padding: 12px 24px;
+      border-radius: 25px;
+      font-weight: 700;
+      font-size: 13px;
+      text-decoration: none;
+      display: inline-block;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    }
+  </style>
 </head>
 <body>
-<header>
-<div class="logo">ZUNAVIX <span>RADIO</span></div>
-<nav><a href="#music">Music</a><a href="#shows">Shows</a><a href="#events">Events</a><a href="#advertise">Advertise</a></nav>
-</header>
-<section class="hero">
-<div class="k">MUSIC • CLUBS • DJs • ARTISTS • EVENTS</div>
-<h1>THE SOUND<br>OF THE NIGHT.</h1>
-<p>ZUNAVIX RADIO connects music, nightlife and live events through one digital radio destination.</p>
-<a class="btn" href="#listen">▶ LISTEN LIVE</a>
-<div class="live" id="listen">🔴 <b>LIVE PLAYER</b> — radio stream will connect here</div>
-</section>
-<section id="music"><h2>NOW PLAYING</h2><div class="card"><h3>🎵 ZUNAVIX RADIO LIVE</h3><p>Your current song or show will appear here once the live stream is connected.</p></div></section>
-<section id="shows"><h2>SHOWS</h2><div class="grid"><div class="card"><h3>DJ Sessions</h3><p>Featured mixes and guest DJs.</p></div><div class="card"><h3>Artist Spotlight</h3><p>New music, artists and interviews.</p></div><div class="card"><h3>Nightlife Live</h3><p>Clubs, parties and weekend entertainment.</p></div></div></section>
-<section id="events"><h2>EVENTS</h2><div class="card"><h3>Featured Events</h3><p>Club nights, concerts and entertainment campaigns will appear here.</p></div></section>
-<section id="advertise"><div class="ad"><h2>ADVERTISE WITH ZUNAVIX RADIO</h2><p>Promote your club, event, DJ, artist or entertainment business through radio advertising.</p><br><a class="btn" href="#contact">BOOK A CAMPAIGN</a></div></section>
-<section id="contact"><h2>CONTACT</h2><div class="card"><h3>Advertising & Partnerships</h3><p>Contact details will be added when the station business contact is finalized.</p></div></section>
-<footer><b>ZUNAVIX RADIO</b><br>Music • Clubs • DJs • Artists • Events<br><br>© 2026 ZUNAVIX RADIO</footer>
+
+  <header>
+    <div class="logo">ZUNAVIX RADIO</div>
+    <div class="tagline">The Pulse of DJs, Nightclubs & Global Sounds</div>
+  </header>
+
+  <div class="container">
+
+    <!-- 1. Live Radio Player -->
+    <div class="player-card">
+      <span class="badge">● LIVE ON AIR 24/7</span>
+      <h3 style="font-size: 17px; margin-bottom: 4px;">Zunavix Mainstream Live</h3>
+      <p style="font-size: 12px; color: #a0a0b2;">Club Mixes, Tech House & Fresh Hits</p>
+      
+      <audio controls autoplay>
+        <source src="https://stream.zeno.fm/f3wvbbqmdg8uv" type="audio/mpeg">
+        Your browser does not support audio playback.
+      </audio>
+    </div>
+
+    <!-- 2. DJ Spotlight Section -->
+    <h2>🎧 DJ Spotlight</h2>
+    <div class="promo-card">
+      <div class="promo-icon">🎛️</div>
+      <div class="promo-info">
+        <h3>Featured DJ: DJ NightVibe</h3>
+        <p>Exclusive 1-Hour Weekend Club Electro Mix.</p>
+        <a href="#book" class="btn-action">Listen Mixtape / Book DJ →</a>
+      </div>
+    </div>
+
+    <!-- 3. Nightclub & Event Promo -->
+    <h2>🪩 Club & Events Guide</h2>
+    <div class="promo-card">
+      <div class="promo-icon">🍸</div>
+      <div class="promo-info">
+        <h3>Neon Odyssey Saturday</h3>
+        <p>Live at Club Zenith | Free entry before 11 PM.</p>
+        <a href="#book" class="btn-action">View Event Flyer & Tables →</a>
+      </div>
+    </div>
+
+    <!-- 4. Music Premiere -->
+    <h2>🔥 Fresh Release</h2>
+    <div class="promo-card">
+      <div class="promo-icon">🎵</div>
+      <div class="promo-info">
+        <h3>New Single: Desert Waves</h3>
+        <p>By Alex Rivera — Now playing in prime rotation.</p>
+        <a href="#book" class="btn-action">Stream Single →</a>
+      </div>
+    </div>
+
+    <!-- 5. Paid Feature Booking CTA -->
+    <div class="cta-box" id="book">
+      <h3>Get Your Music or Club Featured!</h3>
+      <p>Radio Airplay • DJ Spotlight • Event Promotions</p>
+      <a href="https://instagram.com" target="_blank" class="btn-promo">Submit For Feature / Ad</a>
+    </div>
+
+  </div>
+
 </body>
 </html>
