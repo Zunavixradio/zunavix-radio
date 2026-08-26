@@ -1,2 +1,4 @@
-# zunavix-radio
-ZUNAVIX RADIO — Music, Clubs, DJs, Artists &amp; Events
+<script>
+  window.location.href = "index.html";
+</script>
+
